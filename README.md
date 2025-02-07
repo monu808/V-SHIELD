@@ -40,20 +40,10 @@ DeepShield is a deep learning-based tool designed to detect deepfake images. It 
 Create and Activate a Virtual Environment (Optional but Recommended):
 
 bash
-Copy
-Edit
 python -m venv deepshield_env
 source deepshield_env/bin/activate  # On Windows: deepshield_env\Scripts\activate
 Install the Required Packages:
 
-bash
-Copy
-Edit
-pip install tensorflow keras opencv-python mtcnn flask numpy matplotlib scikit-learn
-Folder Structure
-php
-Copy
-Edit
 deepshield/
 │
 ├── dataset/
@@ -75,6 +65,7 @@ deepshield/
 ├── train_model.py           # Script to build and train the deepfake detection model
 ├── evaluate_model.py        # Script to evaluate the trained model
 └── app.py                   # Flask application for real-time image prediction
+
 Usage
 Data Preprocessing
 Before training, preprocess your images to extract faces:
@@ -82,16 +73,12 @@ Before training, preprocess your images to extract faces:
 Place your raw images in the following structure:
 
 sql
-Copy
-Edit
 dataset/
     real/   (images with real faces)
     fake/   (images with deepfake faces)
 Run the preprocessing script:
 
 bash
-Copy
-Edit
 python preprocess.py
 This script uses MTCNN to detect faces and saves the cropped images in a new folder called processed_dataset/.
 
@@ -99,8 +86,6 @@ Training the Model
 Train the deepfake detection model using the preprocessed data:
 
 bash
-Copy
-Edit
 python train_model.py
 The script leverages transfer learning with the Xception model.
 The best-performing model is saved as deepshield_best.h5.
@@ -113,8 +98,6 @@ Organize your test dataset (e.g., in a folder named processed_dataset_test/ with
 Run the evaluation script:
 
 bash
-Copy
-Edit
 python evaluate_model.py
 The script will output the test accuracy and loss.
 
@@ -122,8 +105,6 @@ Running the Flask App
 Launch the Flask web application to perform real-time deepfake detection:
 
 bash
-Copy
-Edit
 python app.py
 Open your browser and navigate to http://127.0.0.1:5000/.
 Use the provided web interface to upload an image.
@@ -133,8 +114,6 @@ TensorFlow CPU Optimization Message:
 You may see a message about CPU instructions (e.g., SSE, AVX) when running the scripts. This is an informational log. To suppress it, set:
 
 bash
-Copy
-Edit
 export TF_CPP_MIN_LOG_LEVEL=2  # Linux/macOS
 set TF_CPP_MIN_LOG_LEVEL=2     # Windows (Command Prompt)
 Face Not Detected:
